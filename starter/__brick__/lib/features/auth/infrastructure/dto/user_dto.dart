@@ -1,8 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/domain/value_objects.dart';
 import '../../domain/user.dart';
-import '../../domain/value_objects.dart';
 
 part 'user_dto.freezed.dart';
 part 'user_dto.g.dart';
@@ -10,7 +8,7 @@ part 'user_dto.g.dart';
 @freezed
 class UserDTO with _$UserDTO {
   const factory UserDTO({
-    required String id,
+    required int id,
     required String email,
     @JsonKey(name: 'token') required String userToken,
   }) = _UserDTO;
@@ -19,9 +17,9 @@ class UserDTO with _$UserDTO {
 
   factory UserDTO.fromDomain(User _) {
     return UserDTO(
-      id: _.id.getOrCrash(),
-      email: _.email.getOrCrash(),
-      userToken: _.userToken.getOrCrash(),
+      id: _.id,
+      email: _.email ?? "",
+      userToken: _.userToken ?? "",
     );
   }
 
@@ -30,9 +28,9 @@ class UserDTO with _$UserDTO {
 
   User toDomain() {
     return User(
-      id: UniqueId(id),
-      email: Email(email),
-      userToken: UserToken(userToken),
+      id: id,
+      email: email,
+      userToken: userToken,
     );
   }
 }

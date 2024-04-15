@@ -1,10 +1,10 @@
-import 'package:flutter/services.dart';
-import 'package:promptlee/utils/utils.dart';
+import 'dart:io';
 
-import '../../core/domain/value_objects.dart';
+import 'package:flutter/services.dart';
+
+import '../../../core/generics/result.dart';
 import '../../core/infrastructure/exceptions.dart';
 import '../domain/auth_failure.dart';
-import '../domain/value_objects.dart';
 import 'auth_remote_service.dart';
 import 'credentials_storage/credentials_storage.dart';
 
@@ -20,11 +20,11 @@ class AuthRepository {
   Future<bool> isSignedIn() =>
       getSignedInCredentials().then((credentials) => credentials != null);
 
-  Future<Either<AuthFailure, Unit>> signOut() async {
+  Future<Result<AuthFailure, Exception>> signOut() async {
     try {
       await _remoteService.signOut();
     } on RestApiException catch (e) {
-      return Left(errorMsg: AuthFailure.server(e.errorCode));
+      return Failure( exception: Exception(e.toString(),),);
     } on NoConnectionException {
       // Ignoring
     }
@@ -32,13 +32,13 @@ class AuthRepository {
     return clearCredentialsStorage();
   }
 
-  Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword({
-    required Email email,
-    required Password password,
+  Future<Result<AuthFailure, Exception>> signInWithEmailAndPassword({
+    required String email,
+    required String password,
   }) async {
     try {
-      final emailStr = email.getOrCrash();
-      final passwordStr = password.getOrCrash();
+      final emailStr = email;
+      final passwordStr = password;
 
       final authResponse = await _remoteService.signIn(
         email: emailStr,
@@ -48,20 +48,19 @@ class AuthRepository {
       return authResponse.when(
         withToken: (token) async {
           await _credentialsStorage.save(token);
-          return Right(
-            data: Unit(),
+          return Failure(
+            exception: Exception(),
           );
         },
-        failure: (errorCode, message) => Left(
-            errorMsg: AuthFailure.server(
-          errorCode,
-          message,
-        )),
+        failure: (errorCode, message) => Failure(
+            exception: Exception(message),
+        statusCode: errorCode,
+        ),
       );
     } on RestApiException catch (e) {
-      return Left(errorMsg: AuthFailure.server(e.errorCode));
+      return Failure(exception: Exception(e.toString()), statusCode: e.errorCode);
     } on NoConnectionException {
-      return Left(errorMsg: const AuthFailure.noConnection());
+      return Failure(exception: SocketException("No Internet Connection"));
     }
   }
 
@@ -75,14 +74,14 @@ class AuthRepository {
     }
   }
 
-  Future<Either<AuthFailure, Unit>> clearCredentialsStorage() async {
+  Future<Result<AuthFailure, Exception>> clearCredentialsStorage() async {
     try {
       await _credentialsStorage.clear();
-      return Right(
-        data: Unit(),
+      return Failure(
+        exception: Exception(),
       );
     } on PlatformException {
-      return Left(errorMsg: const AuthFailure.storage());
+      return Failure(exception: Exception(const AuthFailure.storage()));
     }
   }
 }

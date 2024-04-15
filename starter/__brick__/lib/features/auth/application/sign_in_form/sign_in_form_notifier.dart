@@ -1,10 +1,9 @@
-import 'package:promptlee/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../core/domain/value_objects.dart';
+import '../../../../core/generics/result.dart';
+import '../../../../core/params/unit.dart';
 import '../../domain/auth_failure.dart';
-import '../../domain/value_objects.dart';
 import '../../infrastructure/auth_repository.dart';
 
 part 'sign_in_form_state.dart';
@@ -17,18 +16,18 @@ class SignInFormNotifier extends StateNotifier<SignInFormState> {
 
   void changeEmail(String emailStr) {
     state = state.copyWith(
-      email: Email(emailStr),
+      email: emailStr,
     );
   }
 
   void changePassword(String passwordStr) {
     state = state.copyWith(
-      password: Password(passwordStr),
+      password: passwordStr,
     );
   }
 
   Future<void> signInWithEmailAndPassword() async {
-    Either<AuthFailure, Unit>? signInFailureOrSuccess;
+    Result<AuthFailure, Exception>? signInFailureOrSuccess;
 
     if (isValid) {
       state = state.copyWith(
@@ -52,7 +51,6 @@ class SignInFormNotifier extends StateNotifier<SignInFormState> {
       state.email,
       state.password,
     ];
-
-    return Validator.validate(values);
+    return true;
   }
 }

@@ -1,8 +1,7 @@
-import 'package:promptlee/utils/utils.dart';
+import 'package:achieve/core/generics/result.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../core/domain/value_objects.dart';
 import '../../domain/auth_failure.dart';
 import '../../infrastructure/auth_repository.dart';
 
@@ -18,9 +17,14 @@ class SignOutNotifier extends StateNotifier<SignOutState> {
     state = const SignOutState.inProgress();
     final failureOrSuccess = await _repository.signOut();
     state = switch (failureOrSuccess) {
-      Left<AuthFailure, Unit>(errorMsg: final error) =>
-        SignOutState.failure(error!),
-      Right<AuthFailure, Unit>(data: _) => SignOutState.success(),
+      
+      // Failure<AuthFailure, Exception>(errorMsg: final error) =>
+      //   SignOutState.failure(error!),
+      // Right<AuthFailure, Exception>(data: _) => SignOutState.success(),
+      // TODO: Handle this case.
+      Success<AuthFailure, Exception>() => SignOutState.success(),
+      // TODO: Handle this case.
+      Failure<AuthFailure, Exception>() => SignOutState.failure(),
     };
   }
 }

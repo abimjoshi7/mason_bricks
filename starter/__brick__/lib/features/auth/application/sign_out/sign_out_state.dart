@@ -5,5 +5,5 @@ class SignOutState with _$SignOutState {
   const factory SignOutState.initial() = _Initial;
   const factory SignOutState.inProgress() = _InProgress;
   const factory SignOutState.success() = _Success;
-  const factory SignOutState.failure(AuthFailure failure) = _Failure;
+  const factory SignOutState.failure({String? msg}) = _Failure;
 }

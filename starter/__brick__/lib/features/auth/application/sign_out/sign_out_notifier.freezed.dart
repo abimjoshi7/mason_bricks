@@ -12,7 +12,7 @@ part of 'sign_out_notifier.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SignOutState {
@@ -21,7 +21,7 @@ mixin _$SignOutState {
     required TResult Function() initial,
     required TResult Function() inProgress,
     required TResult Function() success,
-    required TResult Function(AuthFailure failure) failure,
+    required TResult Function(String? msg) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$SignOutState {
     TResult? Function()? initial,
     TResult? Function()? inProgress,
     TResult? Function()? success,
-    TResult? Function(AuthFailure failure)? failure,
+    TResult? Function(String? msg)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$SignOutState {
     TResult Function()? initial,
     TResult Function()? inProgress,
     TResult Function()? success,
-    TResult Function(AuthFailure failure)? failure,
+    TResult Function(String? msg)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,7 +127,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() inProgress,
     required TResult Function() success,
-    required TResult Function(AuthFailure failure) failure,
+    required TResult Function(String? msg) failure,
   }) {
     return initial();
   }
@@ -138,7 +138,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? inProgress,
     TResult? Function()? success,
-    TResult? Function(AuthFailure failure)? failure,
+    TResult? Function(String? msg)? failure,
   }) {
     return initial?.call();
   }
@@ -149,7 +149,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? inProgress,
     TResult Function()? success,
-    TResult Function(AuthFailure failure)? failure,
+    TResult Function(String? msg)? failure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -241,7 +241,7 @@ class _$InProgressImpl implements _InProgress {
     required TResult Function() initial,
     required TResult Function() inProgress,
     required TResult Function() success,
-    required TResult Function(AuthFailure failure) failure,
+    required TResult Function(String? msg) failure,
   }) {
     return inProgress();
   }
@@ -252,7 +252,7 @@ class _$InProgressImpl implements _InProgress {
     TResult? Function()? initial,
     TResult? Function()? inProgress,
     TResult? Function()? success,
-    TResult? Function(AuthFailure failure)? failure,
+    TResult? Function(String? msg)? failure,
   }) {
     return inProgress?.call();
   }
@@ -263,7 +263,7 @@ class _$InProgressImpl implements _InProgress {
     TResult Function()? initial,
     TResult Function()? inProgress,
     TResult Function()? success,
-    TResult Function(AuthFailure failure)? failure,
+    TResult Function(String? msg)? failure,
     required TResult orElse(),
   }) {
     if (inProgress != null) {
@@ -355,7 +355,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function() initial,
     required TResult Function() inProgress,
     required TResult Function() success,
-    required TResult Function(AuthFailure failure) failure,
+    required TResult Function(String? msg) failure,
   }) {
     return success();
   }
@@ -366,7 +366,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? initial,
     TResult? Function()? inProgress,
     TResult? Function()? success,
-    TResult? Function(AuthFailure failure)? failure,
+    TResult? Function(String? msg)? failure,
   }) {
     return success?.call();
   }
@@ -377,7 +377,7 @@ class _$SuccessImpl implements _Success {
     TResult Function()? initial,
     TResult Function()? inProgress,
     TResult Function()? success,
-    TResult Function(AuthFailure failure)? failure,
+    TResult Function(String? msg)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -434,9 +434,7 @@ abstract class _$$FailureImplCopyWith<$Res> {
           _$FailureImpl value, $Res Function(_$FailureImpl) then) =
       __$$FailureImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AuthFailure failure});
-
-  $AuthFailureCopyWith<$Res> get failure;
+  $Res call({String? msg});
 }
 
 /// @nodoc
@@ -450,36 +448,28 @@ class __$$FailureImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? failure = null,
+    Object? msg = freezed,
   }) {
     return _then(_$FailureImpl(
-      null == failure
-          ? _value.failure
-          : failure // ignore: cast_nullable_to_non_nullable
-              as AuthFailure,
+      msg: freezed == msg
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AuthFailureCopyWith<$Res> get failure {
-    return $AuthFailureCopyWith<$Res>(_value.failure, (value) {
-      return _then(_value.copyWith(failure: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$FailureImpl implements _Failure {
-  const _$FailureImpl(this.failure);
+  const _$FailureImpl({this.msg});
 
   @override
-  final AuthFailure failure;
+  final String? msg;
 
   @override
   String toString() {
-    return 'SignOutState.failure(failure: $failure)';
+    return 'SignOutState.failure(msg: $msg)';
   }
 
   @override
@@ -487,11 +477,11 @@ class _$FailureImpl implements _Failure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FailureImpl &&
-            (identical(other.failure, failure) || other.failure == failure));
+            (identical(other.msg, msg) || other.msg == msg));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, failure);
+  int get hashCode => Object.hash(runtimeType, msg);
 
   @JsonKey(ignore: true)
   @override
@@ -505,9 +495,9 @@ class _$FailureImpl implements _Failure {
     required TResult Function() initial,
     required TResult Function() inProgress,
     required TResult Function() success,
-    required TResult Function(AuthFailure failure) failure,
+    required TResult Function(String? msg) failure,
   }) {
-    return failure(this.failure);
+    return failure(msg);
   }
 
   @override
@@ -516,9 +506,9 @@ class _$FailureImpl implements _Failure {
     TResult? Function()? initial,
     TResult? Function()? inProgress,
     TResult? Function()? success,
-    TResult? Function(AuthFailure failure)? failure,
+    TResult? Function(String? msg)? failure,
   }) {
-    return failure?.call(this.failure);
+    return failure?.call(msg);
   }
 
   @override
@@ -527,11 +517,11 @@ class _$FailureImpl implements _Failure {
     TResult Function()? initial,
     TResult Function()? inProgress,
     TResult Function()? success,
-    TResult Function(AuthFailure failure)? failure,
+    TResult Function(String? msg)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
-      return failure(this.failure);
+      return failure(msg);
     }
     return orElse();
   }
@@ -575,9 +565,9 @@ class _$FailureImpl implements _Failure {
 }
 
 abstract class _Failure implements SignOutState {
-  const factory _Failure(final AuthFailure failure) = _$FailureImpl;
+  const factory _Failure({final String? msg}) = _$FailureImpl;
 
-  AuthFailure get failure;
+  String? get msg;
   @JsonKey(ignore: true)
   _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
       throw _privateConstructorUsedError;

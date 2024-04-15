@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../l10n/l10n.dart';
-import '../../core/presentation/widgets/loading_overlay.dart';
+import '../../../core/widgets/loading_overlay.dart';
 import '../shared/providers.dart';
 import 'widgets/sign_in_scaffold.dart';
 
@@ -11,7 +10,7 @@ class SignInPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = context.l10n;
+    // final l10n = context.l10n;
 
     // ref.listen<Option<Either<AuthFailure, Unit>>>(
     //   signInFormNotifierProvider.select(

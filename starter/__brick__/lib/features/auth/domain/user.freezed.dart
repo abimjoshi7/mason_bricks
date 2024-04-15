@@ -12,13 +12,15 @@ part of 'user.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$User {
-  UniqueId get id => throw _privateConstructorUsedError;
-  Email get email => throw _privateConstructorUsedError;
-  UserToken get userToken => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get userToken => throw _privateConstructorUsedError;
+  String? get phone => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
@@ -29,7 +31,8 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({UniqueId id, Email email, UserToken userToken});
+  $Res call(
+      {int id, String? email, String? userToken, String? phone, String? name});
 }
 
 /// @nodoc
@@ -46,22 +49,32 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @override
   $Res call({
     Object? id = null,
-    Object? email = null,
-    Object? userToken = null,
+    Object? email = freezed,
+    Object? userToken = freezed,
+    Object? phone = freezed,
+    Object? name = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
-      email: null == email
+              as int,
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as Email,
-      userToken: null == userToken
+              as String?,
+      userToken: freezed == userToken
           ? _value.userToken
           : userToken // ignore: cast_nullable_to_non_nullable
-              as UserToken,
+              as String?,
+      phone: freezed == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -73,7 +86,8 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$UserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UniqueId id, Email email, UserToken userToken});
+  $Res call(
+      {int id, String? email, String? userToken, String? phone, String? name});
 }
 
 /// @nodoc
@@ -87,22 +101,32 @@ class __$$UserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? email = null,
-    Object? userToken = null,
+    Object? email = freezed,
+    Object? userToken = freezed,
+    Object? phone = freezed,
+    Object? name = freezed,
   }) {
     return _then(_$UserImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
-      email: null == email
+              as int,
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as Email,
-      userToken: null == userToken
+              as String?,
+      userToken: freezed == userToken
           ? _value.userToken
           : userToken // ignore: cast_nullable_to_non_nullable
-              as UserToken,
+              as String?,
+      phone: freezed == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -111,18 +135,22 @@ class __$$UserImplCopyWithImpl<$Res>
 
 class _$UserImpl implements _User {
   const _$UserImpl(
-      {required this.id, required this.email, required this.userToken});
+      {required this.id, this.email, this.userToken, this.phone, this.name});
 
   @override
-  final UniqueId id;
+  final int id;
   @override
-  final Email email;
+  final String? email;
   @override
-  final UserToken userToken;
+  final String? userToken;
+  @override
+  final String? phone;
+  @override
+  final String? name;
 
   @override
   String toString() {
-    return 'User(id: $id, email: $email, userToken: $userToken)';
+    return 'User(id: $id, email: $email, userToken: $userToken, phone: $phone, name: $name)';
   }
 
   @override
@@ -133,11 +161,14 @@ class _$UserImpl implements _User {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.userToken, userToken) ||
-                other.userToken == userToken));
+                other.userToken == userToken) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, email, userToken);
+  int get hashCode =>
+      Object.hash(runtimeType, id, email, userToken, phone, name);
 
   @JsonKey(ignore: true)
   @override
@@ -148,16 +179,22 @@ class _$UserImpl implements _User {
 
 abstract class _User implements User {
   const factory _User(
-      {required final UniqueId id,
-      required final Email email,
-      required final UserToken userToken}) = _$UserImpl;
+      {required final int id,
+      final String? email,
+      final String? userToken,
+      final String? phone,
+      final String? name}) = _$UserImpl;
 
   @override
-  UniqueId get id;
+  int get id;
   @override
-  Email get email;
+  String? get email;
   @override
-  UserToken get userToken;
+  String? get userToken;
+  @override
+  String? get phone;
+  @override
+  String? get name;
   @override
   @JsonKey(ignore: true)
   _$$UserImplCopyWith<_$UserImpl> get copyWith =>

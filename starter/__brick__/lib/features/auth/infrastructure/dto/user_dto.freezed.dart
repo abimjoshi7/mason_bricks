@@ -12,7 +12,7 @@ part of 'user_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 UserDTO _$UserDTOFromJson(Map<String, dynamic> json) {
   return _UserDTO.fromJson(json);
@@ -20,7 +20,7 @@ UserDTO _$UserDTOFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserDTO {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   @JsonKey(name: 'token')
   String get userToken => throw _privateConstructorUsedError;
@@ -35,8 +35,7 @@ abstract class $UserDTOCopyWith<$Res> {
   factory $UserDTOCopyWith(UserDTO value, $Res Function(UserDTO) then) =
       _$UserDTOCopyWithImpl<$Res, UserDTO>;
   @useResult
-  $Res call(
-      {String id, String email, @JsonKey(name: 'token') String userToken});
+  $Res call({int id, String email, @JsonKey(name: 'token') String userToken});
 }
 
 /// @nodoc
@@ -60,7 +59,7 @@ class _$UserDTOCopyWithImpl<$Res, $Val extends UserDTO>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -80,8 +79,7 @@ abstract class _$$UserDTOImplCopyWith<$Res> implements $UserDTOCopyWith<$Res> {
       __$$UserDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id, String email, @JsonKey(name: 'token') String userToken});
+  $Res call({int id, String email, @JsonKey(name: 'token') String userToken});
 }
 
 /// @nodoc
@@ -103,7 +101,7 @@ class __$$UserDTOImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -129,7 +127,7 @@ class _$UserDTOImpl extends _UserDTO {
       _$$UserDTOImplFromJson(json);
 
   @override
-  final String id;
+  final int id;
   @override
   final String email;
   @override
@@ -172,7 +170,7 @@ class _$UserDTOImpl extends _UserDTO {
 
 abstract class _UserDTO extends UserDTO {
   const factory _UserDTO(
-      {required final String id,
+      {required final int id,
       required final String email,
       @JsonKey(name: 'token') required final String userToken}) = _$UserDTOImpl;
   const _UserDTO._() : super._();
@@ -180,7 +178,7 @@ abstract class _UserDTO extends UserDTO {
   factory _UserDTO.fromJson(Map<String, dynamic> json) = _$UserDTOImpl.fromJson;
 
   @override
-  String get id;
+  int get id;
   @override
   String get email;
   @override

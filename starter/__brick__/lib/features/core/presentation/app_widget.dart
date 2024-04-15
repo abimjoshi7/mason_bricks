@@ -4,15 +4,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../../../config/configuration.dart';
-import '../../../constants/strings.dart';
-import '../../../l10n/l10n.dart';
+import '../../../core/params/unit.dart';
 import '../../../style/style.dart';
 import '../../auth/shared/providers.dart';
-import '../domain/value_objects.dart';
 import '../shared/providers.dart';
 
 final initializationProvider = FutureProvider<Unit>((ref) async {
-  await ref.read(hiveProvider).init();
   ref.read(dioProvider)
     ..options = BaseOptions(
       connectTimeout: BuildConfig.get().connectTimeout,
@@ -50,9 +47,9 @@ class AppWidget extends HookConsumerWidget {
       routeInformationProvider: router.routeInformationProvider,
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
-      title: Strings.appName,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
+      // title: Strings.appName,
+      // localizationsDelegates: AppLocalizations.localizationsDelegates,
+      // supportedLocales: AppLocalizations.supportedLocales,
       theme: Themes.lightTheme(context),
       darkTheme: Themes.darkTheme(context),
       themeMode: ThemeMode.light,

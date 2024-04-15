@@ -1,6 +1,8 @@
 part of style;
 
 class Palette {
+  const Palette._();
+
   static const primaryColor = Color(0xff13b9fd);
   static const primaryDarkColor = Color(0xff0089ca);
   static const primaryLightColor = Color(0xff6debff);
@@ -17,5 +19,6 @@ class Palette {
   static const mystic = Color(0xffdfe3ee);
   static const charade = Color(0xff252a33);
   static const coralRed = Color(0xffff4242);
+  static const brightGreen = Color(0xff62ffb7);
   static const polar = Color(0xffeffbf9);
 }

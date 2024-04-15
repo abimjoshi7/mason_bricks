@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../l10n/l10n.dart';
 import '../../shared/providers.dart';
 
 class SignInForm extends HookConsumerWidget {
@@ -9,7 +8,7 @@ class SignInForm extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = context.l10n;
+    // final l10n = context.l10n;
     final showErrorMessages = ref.watch(
       signInFormNotifierProvider.select((state) => state.showErrorMessages),
     );
@@ -43,7 +42,7 @@ class SignInForm extends HookConsumerWidget {
           TextFormField(
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.lock),
-              labelText: l10n.password,
+              labelText: "Password",
             ),
             obscureText: true,
             onChanged: (value) => ref

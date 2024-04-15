@@ -21,10 +21,10 @@ class HomeScaffold extends HookConsumerWidget {
                 ref.read(signOutNotifierProvider.notifier).signOut(),
             icon: const Icon(Icons.logout),
           ),
-          IconButton(
-            onPressed: () => context.goNamed(AppRoutes.registerScreen),
-            icon: const Icon(Icons.login),
-          ),
+          // IconButton(
+          //   onPressed: () => context.goNamed(AppRoutes.registerScreen),
+          //   icon: const Icon(Icons.login),
+          // ),
         ],
       ),
       body: Center(

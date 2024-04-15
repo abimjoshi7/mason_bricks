@@ -12,12 +12,12 @@ part of 'sign_in_form_notifier.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SignInFormState {
-  Email get email => throw _privateConstructorUsedError;
-  Password get password => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
 
@@ -33,8 +33,8 @@ abstract class $SignInFormStateCopyWith<$Res> {
       _$SignInFormStateCopyWithImpl<$Res, SignInFormState>;
   @useResult
   $Res call(
-      {Email email,
-      Password password,
+      {String email,
+      String password,
       bool showErrorMessages,
       bool isSubmitting});
 }
@@ -61,11 +61,11 @@ class _$SignInFormStateCopyWithImpl<$Res, $Val extends SignInFormState>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as Email,
+              as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as Password,
+              as String,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -87,8 +87,8 @@ abstract class _$$SignInFormStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Email email,
-      Password password,
+      {String email,
+      String password,
       bool showErrorMessages,
       bool isSubmitting});
 }
@@ -113,11 +113,11 @@ class __$$SignInFormStateImplCopyWithImpl<$Res>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as Email,
+              as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as Password,
+              as String,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
@@ -140,9 +140,9 @@ class _$SignInFormStateImpl implements _SignInFormState {
       required this.isSubmitting});
 
   @override
-  final Email email;
+  final String email;
   @override
-  final Password password;
+  final String password;
   @override
   final bool showErrorMessages;
   @override
@@ -181,15 +181,15 @@ class _$SignInFormStateImpl implements _SignInFormState {
 
 abstract class _SignInFormState implements SignInFormState {
   const factory _SignInFormState(
-      {required final Email email,
-      required final Password password,
+      {required final String email,
+      required final String password,
       required final bool showErrorMessages,
       required final bool isSubmitting}) = _$SignInFormStateImpl;
 
   @override
-  Email get email;
+  String get email;
   @override
-  Password get password;
+  String get password;
   @override
   bool get showErrorMessages;
   @override
