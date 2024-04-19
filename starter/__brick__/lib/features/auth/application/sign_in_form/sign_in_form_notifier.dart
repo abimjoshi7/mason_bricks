@@ -1,8 +1,7 @@
+import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../core/generics/result.dart';
-import '../../../../core/params/unit.dart';
 import '../../domain/auth_failure.dart';
 import '../../infrastructure/auth_repository.dart';
 
@@ -27,7 +26,7 @@ class SignInFormNotifier extends StateNotifier<SignInFormState> {
   }
 
   Future<void> signInWithEmailAndPassword() async {
-    Result<AuthFailure, Exception>? signInFailureOrSuccess;
+    Either<AuthFailure, Exception>? signInFailureOrSuccess;
 
     if (isValid) {
       state = state.copyWith(

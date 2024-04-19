@@ -1,7 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../core/shared/providers.dart';
+import '../../../core/network/provider.dart';
 import '../application/auth/auth_notifier.dart';
 import '../application/sign_in_form/sign_in_form_notifier.dart';
 import '../application/sign_out/sign_out_notifier.dart';

@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/services.dart';
+import 'package:fpdart/fpdart.dart';
 
-import '../../../core/generics/result.dart';
-import '../../core/infrastructure/exceptions.dart';
+import '../../../core/core.dart';
 import '../domain/auth_failure.dart';
 import 'auth_remote_service.dart';
 import 'credentials_storage/credentials_storage.dart';
@@ -20,11 +20,11 @@ class AuthRepository {
   Future<bool> isSignedIn() =>
       getSignedInCredentials().then((credentials) => credentials != null);
 
-  Future<Result<AuthFailure, Exception>> signOut() async {
+  Future<Either<AuthFailure, Exception>> signOut() async {
     try {
       await _remoteService.signOut();
     } on RestApiException catch (e) {
-      return Failure( exception: Exception(e.toString(),),);
+      return Either.right(Exception(e.toString(),),);
     } on NoConnectionException {
       // Ignoring
     }
@@ -32,7 +32,7 @@ class AuthRepository {
     return clearCredentialsStorage();
   }
 
-  Future<Result<AuthFailure, Exception>> signInWithEmailAndPassword({
+  Future<Either<AuthFailure, Exception>> signInWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
@@ -48,19 +48,18 @@ class AuthRepository {
       return authResponse.when(
         withToken: (token) async {
           await _credentialsStorage.save(token);
-          return Failure(
-            exception: Exception(),
+          return Either.right(
+             Exception(),
           );
         },
-        failure: (errorCode, message) => Failure(
-            exception: Exception(message),
-        statusCode: errorCode,
+        failure: (errorCode, message) => Either.right(
+            Exception(message),
         ),
       );
     } on RestApiException catch (e) {
-      return Failure(exception: Exception(e.toString()), statusCode: e.errorCode);
+      return Either.right(Exception(e.toString()), );
     } on NoConnectionException {
-      return Failure(exception: SocketException("No Internet Connection"));
+      return Either.right(SocketException("No Internet Connection"));
     }
   }
 
@@ -74,14 +73,14 @@ class AuthRepository {
     }
   }
 
-  Future<Result<AuthFailure, Exception>> clearCredentialsStorage() async {
+  Future<Either<AuthFailure, Exception>> clearCredentialsStorage() async {
     try {
       await _credentialsStorage.clear();
-      return Failure(
-        exception: Exception(),
+      return Either.right(
+        Exception(),
       );
     } on PlatformException {
-      return Failure(exception: Exception(const AuthFailure.storage()));
+      return Either.right(Exception(const AuthFailure.storage()));
     }
   }
 }

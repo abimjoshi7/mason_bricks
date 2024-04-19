@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../../core/infrastructure/dio_extensions.dart';
-import '../../core/infrastructure/exceptions.dart';
+import '../../../core/core.dart';
 import 'auth_response.dart';
 
 class AuthRemoteService {

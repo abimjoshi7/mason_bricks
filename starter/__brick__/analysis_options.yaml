@@ -2,9 +2,9 @@ include: package:lint/strict.yaml
 
 linter:
   rules:
-    avoid_dynamic_calls: false
+    avoid_dynamic_calls: true
     missing_return: error
-    invalid_annotation_target: false
+    invalid_annotation_target: false # for freezed and json serializable compatibility
 
 analyzer:
   exclude:

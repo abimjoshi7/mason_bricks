@@ -1,5 +1,6 @@
-import '../core.dart';
+
+import 'package:fpdart/fpdart.dart';
 
 abstract class UseCase<T, P> {
-  Future<Result<T, Exception>> call({required P params});
+  Future<Either<T, Exception>> call({required P params});
 }
