@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -6,11 +7,8 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import 'config/configuration.dart';
 import 'core/core.dart';
-import 'core/network/provider.dart';
-import 'core/routes/router_provider.dart';
 import 'features/auth/shared/providers.dart';
 import 'style/style.dart';
-
 
 final initializationProvider = FutureProvider<Unit>((ref) async {
   ref.read(dioProvider)
@@ -26,9 +24,9 @@ final initializationProvider = FutureProvider<Unit>((ref) async {
 
   if (!BuildConfig.isProduction) {
     ref.read(dioProvider).interceptors.add(PrettyDioLogger(
-      requestHeader: true,
-      requestBody: true,
-    ));
+          requestHeader: true,
+          requestBody: true,
+        ));
   }
 
   final authNotifier = ref.read(authNotifierProvider.notifier);
@@ -47,6 +45,7 @@ class AppWidget extends HookConsumerWidget {
     final router = ref.watch(routerProvider);
 
     return MaterialApp.router(
+      debugShowCheckedModeBanner: kDebugMode,
       routeInformationProvider: router.routeInformationProvider,
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,

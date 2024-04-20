@@ -20,6 +20,11 @@ abstract class Env {
 
       usePathUrlStrategy();
 
+      await dotenv.load(fileName: 'supabase.env');
+      final supabaseUrl = dotenv.get('SUPABASE_URL');
+      final supabaseKey = dotenv.get('SUPABASE_KEY');
+
+      await Supabase.initialize(url: supabaseUrl, anonKey: supabaseKey,);
       final app = await onCreate();
 
       runApp(

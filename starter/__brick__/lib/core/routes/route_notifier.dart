@@ -33,6 +33,11 @@ class RouterNotifier extends ChangeNotifier {
   List<GoRoute> get routes {
     return [
       GoRoute(
+        name: AppRoutes.defaultNameRoute,
+        path: AppRoutes.defaultRoute,
+        builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
         name: AppRoutes.signInNameRoute,
         path: AppRoutes.signInRoute,
         builder: (context, state) => const SignInPage(),

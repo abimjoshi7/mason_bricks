@@ -10,6 +10,7 @@ final routerProvider = Provider<GoRouter>(
       refreshListenable: router,
       redirect: router.redirectLogic,
       routes: router.routes,
+
     );
   },
 );
