@@ -32,8 +32,8 @@ vars:
     default: feature
     prompt: Name of the feature?
   
-  manager:
-    type: string
-    description: State manager name
-    default: cubits
-    prompt: State manager name?
+  isRiverpod:
+    type: boolean
+    description: State manager selection
+    default: true
+    prompt: Using riverpod?
