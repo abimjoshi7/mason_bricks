@@ -4,7 +4,7 @@ abstract class {{name.pascalCase()}}RemoteDS extends RemoteDS<{{name.pascalCase(
 
 }
 
-class {{name.pascalCase()}}RemoteDSImpl extends {{name.pascalCase()}}RemoteDS {
+class {{name.pascalCase()}}RemoteDSImpl implements {{name.pascalCase()}}RemoteDS {
   final ApiClient _apiClient;
 
   {{name.pascalCase()}}RemoteDSImpl({
@@ -20,3 +20,4 @@ class {{name.pascalCase()}}RemoteDSImpl extends {{name.pascalCase()}}RemoteDS {
   final apiClient = ref.watch(apiClientProvider);
   return {{name.pascalCase()}}RemoteDSImpl(apiClient: apiClient);
 }
+{{/isRiverpod}}

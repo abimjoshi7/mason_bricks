@@ -1,6 +1,6 @@
 part of 'repository.dart';
 
-class {{name.pascalCase()}}RepositoryImpl extends {{name.pascalCase()}}Repository {
+class {{name.pascalCase()}}RepositoryImpl implements {{name.pascalCase()}}Repository {
   final {{name.pascalCase()}}LocalDS _localDS;
   final {{name.pascalCase()}}RemoteDS _remoteDS;
 
@@ -19,3 +19,4 @@ class {{name.pascalCase()}}RepositoryImpl extends {{name.pascalCase()}}Repositor
   final remoteDS = ref.watch({{name}}remoteDSProvider);
   return {{name.pascalCase()}}RepositoryImpl(localDS: localDS, remoteDS: remoteDS,);
 }
+{{/isRiverpod}}

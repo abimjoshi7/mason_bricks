@@ -4,7 +4,7 @@ abstract class {{name.pascalCase()}}LocalDS extends LocalDS<{{name.pascalCase()}
 
 }
 
-class {{name.pascalCase()}}LocalDSImpl extends {{name.pascalCase()}}LocalDS {
+class {{name.pascalCase()}}LocalDSImpl implements {{name.pascalCase()}}LocalDS {
   final AppDatabase _db;
 
   {{name.pascalCase()}}LocalDSImpl({
@@ -20,3 +20,4 @@ class {{name.pascalCase()}}LocalDSImpl extends {{name.pascalCase()}}LocalDS {
   final db = ref.watch(appDatabaseProvider);
   return {{name.pascalCase()}}LocalDSImpl(db: db);
 }
+{{/isRiverpod}}

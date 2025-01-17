@@ -6,6 +6,6 @@ class Get{{name.pascalCase()}}sUseCase extends UseCase<List<{{name.pascalCase()}
   Get{{name.pascalCase()}}sUseCase({{name.pascalCase()}}Repository repository) : _repository = repository;
 
   @override
-  Future<Either<String, List<{{name.lowerCase()}}>>> call(FilterParam param) async => 
+  Future<Either<String, List<{{name.pascalCase()}}>>> call(FilterParam param) async => 
     _repository.getAll(param);
 }
