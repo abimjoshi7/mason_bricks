@@ -8,6 +8,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'usecases.g.dart';
 {{/isRiverpod}}
 
-part 'create_{{name}}_usecase.dart';
-part 'delete{{name}}_usecase.dart';
-part 'get{{name}}s_usecase.dart';
+part 'create_{{name}}.dart';
+part 'delete_{{name}}.dart';
+part 'get_{{name}}s.dart';

@@ -8,5 +8,7 @@ import 'package:utils/utils.dart';
 import '../models/models.dart';
 
 part 'datasources.g.dart';
-part 'local/{{name}}_local_ds.dart';
-part 'remote/{{name}}_remote_ds.dart';
+part '{{name}}_service.dart';
+part '{{name}}_dao.dart';
+part '{{name}}_local_ds.dart';
+part '{{name}}_remote_ds.dart';

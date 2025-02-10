@@ -1,4 +1,4 @@
-part of '../datasources.dart';
+part of 'datasources.dart';
 
 abstract class {{name.pascalCase()}}LocalDS extends LocalDS<{{name.pascalCase()}}Entity, {{name.pascalCase()}}Param> {
 

@@ -1,1 +1,1 @@
-import 'entities/entities.dart';
+part '{{name}}_repository.dart';
