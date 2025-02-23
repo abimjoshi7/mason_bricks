@@ -1,4 +1,4 @@
-part of 'get_{{name}}s_usecase.dart';
+part of 'usecases.dart';
 
 {{^isRiverpod}}
 class Get{{name.pascalCase()}}s extends UseCase<List<{{name.pascalCase()}}>, FilterParam> {

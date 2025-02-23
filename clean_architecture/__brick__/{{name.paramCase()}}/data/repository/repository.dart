@@ -1,8 +1,9 @@
 {{#isRiverpod}}
-import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
 {{/isRiverpod}}
 
-part 'repositories.g.dart';
+part 'repository.g.dart';
 
 part '{{name}}_repository_impl.dart';

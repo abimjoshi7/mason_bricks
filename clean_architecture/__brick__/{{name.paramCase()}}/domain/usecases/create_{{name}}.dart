@@ -1,4 +1,4 @@
-part of 'create_{{name}}_usecase.dart';
+part of 'usecases.dart';
 {{^isRiverpod}}
 class Create{{name.pascalCase()}} extends UseCase<int, {{name.pascalCase()}}Param> {
   final {{name.pascalCase()}}Repository _repository;

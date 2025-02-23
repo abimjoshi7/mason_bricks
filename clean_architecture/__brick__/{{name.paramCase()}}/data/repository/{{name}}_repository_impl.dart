@@ -15,8 +15,8 @@ class {{name.pascalCase()}}RepositoryImpl implements {{name.pascalCase()}}Reposi
 {{#isRiverpod}}
 @riverpod
 {{name.pascalCase()}}Repository {{name}}Repository(Ref ref) {
-  final localDS = ref.watch({{name}}localDSProvider);
-  final remoteDS = ref.watch({{name}}remoteDSProvider);
+  final localDS = ref.watch({{name}}LocalDSProvider);
+  final remoteDS = ref.watch({{name}}RemoteDSProvider);
   return {{name.pascalCase()}}RepositoryImpl(localDS: localDS, remoteDS: remoteDS,);
 }
 {{/isRiverpod}}
