@@ -3,7 +3,7 @@ part of 'notifier.dart';
 @riverpod
 class {{name.pascalCase()}}Notifier extends _${{name.pascalCase()}}Notifier {
   @override
-  BaseState<{{name.pascalCase()}}State> build() {
-    return BaseState.initial();
+  FutureOr<{{name.pascalCase()}}State> build() async {
+    return const {{name.pascalCase()}}State();
   }
 }
