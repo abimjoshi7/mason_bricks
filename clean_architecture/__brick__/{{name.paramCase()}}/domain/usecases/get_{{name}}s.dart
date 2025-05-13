@@ -15,7 +15,7 @@ class Get{{name.pascalCase()}}s extends UseCase<List<{{name.pascalCase()}}>, Fil
 {{#isRiverpod}}
 @riverpod
 Future<Either<Exception, List<{{name.pascalCase()}}>>> get{{name.pascalCase()}}s(Ref ref, [FilterParam? param]) async {
-  final respository = ref.watch({{name.pascalCase()}}RepositoryProvider);
-  return await repository.get(param);
+  final repository = ref.watch({{name}}RepositoryProvider);
+  return await repository.fetchAll(param);
 }
 {{/isRiverpod}}

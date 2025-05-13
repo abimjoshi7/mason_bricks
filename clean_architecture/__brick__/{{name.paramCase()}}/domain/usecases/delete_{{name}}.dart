@@ -15,7 +15,7 @@ class Delete{{name.pascalCase()}} extends UseCase<int, int> {
 {{#isRiverpod}}
 @riverpod
 Future<Either<Exception, int>> delete{{name.pascalCase()}}(Ref ref, int param) async {
-  final respository = ref.watch({{name.pascalCase()}}RepositoryProvider);
+  final repository = ref.watch({{name}}RepositoryProvider);
   return await repository.delete(param);
 }
 {{/isRiverpod}}

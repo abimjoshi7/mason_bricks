@@ -14,7 +14,7 @@ class Create{{name.pascalCase()}} extends UseCase<int, {{name.pascalCase()}}Para
 {{#isRiverpod}}
 @riverpod
 Future<Either<Exception, int>> create{{name.pascalCase()}}(Ref ref, {{name.pascalCase()}}Param param) async {
-  final respository = ref.watch({{name.pascalCase()}}RepositoryProvider);
+  final repository = ref.watch({{name}}RepositoryProvider);
   return await repository.create(param);
 }
 {{/isRiverpod}}
